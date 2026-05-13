@@ -1,33 +1,28 @@
 {
   "users": {
+    "admin": {
+      "password": "admin",
+      "email": "admin@sistema.com",
+      "role": "admin",
+      "default_page": "dashboard_admin.html",
+      "favorites": [],
+      "quick_access": [
+        {"label": "Google", "icon": "bi-google", "url": "https://www.google.com"},
+        {"label": "Analíticas", "icon": "bi-graph-up", "url": "stats.html"}
+      ]
+    },
     "lechuga": {
       "password": "3232",
-      "default_page": "completarcomprobante.html",
-      "apps": [
-        {
-          "id": "comprobante",
-          "label": "Comprobante",
-          "icon": "bi-receipt-cutoff",
-          "url": "completarcomprobante.html",
-          "has_code": false
-        },
-        {
-          "id": "sugerencias",
-          "label": "Sugerencias",
-          "icon": "bi-database-fill-gear",
-          "url": "datosparacompletar.html",
-          "has_code": false
-        },
-        {
-          "id": "generador",
-          "label": "Generador",
-          "icon": "bi-lock-fill",
-          "url": "configurador.html",
-          "has_code": true,
-          "security_code": "1125"
-        }
+      "email": "lechuga@correo.com",
+      "role": "user",
+      "default_page": "inicio_user.html",
+      "favorites": [],
+      "quick_access": [
+        {"label": "Comprobantes", "icon": "bi-receipt", "url": "completarcomprobante.html"}
       ]
     }
   },
-  "plantillas_disponibles": ["plantilla1.png", "plantilla2.jpg", "plantilla3.webp"]
+  "config_global": {
+    "version": "2.0 Mobile-Ready"
+  }
 }
