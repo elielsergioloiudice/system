@@ -4,25 +4,47 @@
       "password": "admin",
       "email": "admin@sistema.com",
       "role": "admin",
-      "default_page": "dashboard_admin.html",
       "favorites": [],
       "quick_access": [
-        {"label": "Google", "icon": "bi-google", "url": "https://www.google.com"},
-        {"label": "Analíticas", "icon": "bi-graph-up", "url": "stats.html"}
+        {"label": "Google", "icon": "bi-google", "url": "https://www.google.com"}
       ]
     },
     "lechuga": {
       "password": "3232",
       "email": "lechuga@correo.com",
       "role": "user",
-      "default_page": "inicio_user.html",
       "favorites": [],
-      "quick_access": [
-        {"label": "Comprobantes", "icon": "bi-receipt", "url": "completarcomprobante.html"}
-      ]
+      "quick_access": []
     }
   },
-  "config_global": {
-    "version": "2.0 Mobile-Ready"
+  "content": {
+    "grupos": [
+      {
+        "id": "g1",
+        "nombre": "Administración",
+        "apps": [
+          {
+            "id": "a1",
+            "label": "Facturación",
+            "desc": "Gestión de facturas y cobros",
+            "url": "facturas.html",
+            "has_code": true
+          }
+        ]
+      },
+      {
+        "id": "g2",
+        "nombre": "Herramientas",
+        "apps": [
+          {
+            "id": "a2",
+            "label": "Calculadora",
+            "desc": "Cálculos rápidos de margen",
+            "url": "calc.html",
+            "has_code": false
+          }
+        ]
+      }
+    ]
   }
 }
