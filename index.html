@@ -13,8 +13,8 @@
             --bg-main: #0d1117;
             --bg-header: #161b22;
             --accent: #58a6ff;
-            --text-gray: #8b949e;
-            --header-height: 65px;
+            --border: #30363d;
+            --header-h: 65px;
         }
 
         body, html {
@@ -22,403 +22,262 @@
             width: 100%; height: 100%;
             background-color: var(--bg-main);
             color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden;
+            font-family: -apple-system, sans-serif;
+        }
+
+        /* --- LOGIN --- */
+        #login-overlay {
+            position: fixed; inset: 0; background: var(--bg-main);
+            z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;
+        }
+        .login-card {
+            background: var(--bg-header); padding: 30px; border-radius: 20px;
+            width: 100%; max-width: 350px; border: 1px solid var(--border); text-align: center;
         }
 
         /* --- HEADER COMPACTO --- */
         header {
-            height: var(--header-height);
-            background: var(--bg-header);
-            border-bottom: 1px solid #30363d;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px;
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 1000;
+            height: var(--header-h); background: var(--bg-header);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5px; position: fixed; top: 0; width: 100%; z-index: 1000;
         }
 
-        .nav-group {
-            display: flex;
-            gap: 5px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-        .nav-group::-webkit-scrollbar { display: none; }
+        .nav-group { display: flex; flex: 1; justify-content: flex-start; gap: 2px; }
 
         .btn-nav {
-            background: transparent;
-            border: none;
-            color: var(--text-gray);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5px 12px;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            transition: 0.2s;
-            min-width: 60px;
+            background: transparent; border: none; color: #8b949e;
+            display: flex; flex-direction: column; align-items: center;
+            font-size: 0.6rem; font-weight: bold; text-transform: uppercase;
+            min-width: 65px; transition: 0.2s; padding: 5px 0;
         }
-
-        .btn-nav i { font-size: 1.3rem; margin-bottom: 2px; }
+        .btn-nav i { font-size: 1.4rem; }
         .btn-nav.active { color: var(--accent); }
-        .btn-nav:active { transform: scale(0.9); }
 
-        /* --- FAVORITOS DROPDOWN --- */
+        /* --- DROPDOWN FAVORITOS --- */
         #fav-menu {
-            display: none;
-            position: absolute;
-            top: var(--header-height);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-header);
-            border: 1px solid #30363d;
-            border-radius: 0 0 12px 12px;
-            width: 200px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 2000;
+            display: none; position: absolute; top: var(--header-h); left: 50%;
+            transform: translateX(-50%); background: var(--bg-header);
+            border: 1px solid var(--border); border-radius: 0 0 15px 15px;
+            width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000;
         }
         .fav-item {
-            padding: 12px;
-            border-bottom: 1px solid #30363d;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding: 15px; border-bottom: 1px solid var(--border);
+            font-size: 0.85rem; display: flex; align-items: center; gap: 10px; cursor: pointer;
         }
         .fav-item:last-child { border: none; }
         .fav-item:active { background: #21262d; }
 
         /* --- FRAME --- */
         #viewport {
-            margin-top: var(--header-height);
-            width: 100%;
-            height: calc(100vh - var(--header-height));
-            border: none;
-            background: #fff;
-        }
-
-        /* --- LOGIN --- */
-        #login-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-main);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .login-card {
-            background: var(--bg-header);
-            padding: 30px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 350px;
-            border: 1px solid #30363d;
-            text-align: center;
-        }
-
-        /* --- PANEL DE AJUSTES (INYECTADO EN FRAME) --- */
-        .settings-container {
-            padding: 20px;
-            color: #333;
-            max-width: 500px;
-            margin: auto;
+            margin-top: var(--header-h); width: 100%;
+            height: calc(100vh - var(--header-h)); border: none; background: #fff;
         }
     </style>
 </head>
 <body>
 
-    <!-- PANTALLA LOGIN -->
     <div id="login-overlay">
         <div class="login-card">
-            <i class="bi bi-person-circle text-primary" style="font-size: 4rem;"></i>
-            <h3 class="my-3">Ingresar</h3>
-            <input type="text" id="user" class="form-control bg-dark text-white border-secondary mb-3" placeholder="Usuario">
-            <input type="password" id="pass" class="form-control bg-dark text-white border-secondary mb-4" placeholder="Contraseña">
-            <button onclick="auth()" class="btn btn-primary w-100 fw-bold">ACCEDER</button>
-            <p id="error-login" class="text-danger mt-3 small" style="display:none;">Datos incorrectos</p>
+            <i class="bi bi-shield-lock-fill text-info" style="font-size: 3rem;"></i>
+            <h4 class="my-3">SISTEMA GESTIÓN</h4>
+            <input type="text" id="user" class="form-control bg-dark text-white border-secondary mb-2" placeholder="Usuario">
+            <input type="password" id="pass" class="form-control bg-dark text-white border-secondary mb-3" placeholder="Contraseña">
+            <button onclick="validarAuth()" class="btn btn-info w-100 fw-bold">ENTRAR</button>
         </div>
     </div>
 
-    <!-- HEADER RESPONSIVO -->
     <header id="main-header" style="display:none;">
         <div class="nav-group">
-            <button class="btn-nav" onclick="goHome()" id="btn-home">
-                <i class="bi bi-house-door"></i>
-                <span>Inicio</span>
+            <button class="btn-nav" onclick="irInicio()" id="btn-home">
+                <i class="bi bi-house-door"></i><span>Inicio</span>
             </button>
-            
             <button class="btn-nav" onclick="toggleFavs()" id="btn-fav">
-                <i class="bi bi-star"></i>
-                <span>Favoritos</span>
+                <i class="bi bi-star"></i><span>Favoritos</span>
             </button>
-
-            <!-- Menú Favoritos -->
-            <div id="fav-menu">
-                <div class="fav-item" onclick="viewFavs()"><i class="bi bi-list-stars"></i> Mis Favoritos</div>
-                <div class="fav-item" onclick="addCurrentToFav()"><i class="bi bi-plus-circle"></i> Agregar este sitio</div>
-                <div class="fav-item text-danger" onclick="delCurrentFromFav()"><i class="bi bi-trash"></i> Borrar de favoritos</div>
-            </div>
-
-            <button class="btn-nav" onclick="openSettings()" id="btn-settings">
-                <i class="bi bi-tools"></i>
-                <span>Ajustes</span>
+            <button class="btn-nav" onclick="irAjustes()" id="btn-settings">
+                <i class="bi bi-tools"></i><span>Ajustes</span>
             </button>
         </div>
-
-        <button class="btn-nav text-danger" onclick="logout()">
-            <i class="bi bi-power"></i>
-            <span>Salir</span>
+        <button class="btn-nav text-danger" onclick="cerrarSesion()">
+            <i class="bi bi-power"></i><span>Salir</span>
         </button>
+
+        <div id="fav-menu">
+            <div class="fav-item" onclick="verMisFavoritos()"><i class="bi bi-collection-play"></i> Mis Favoritos</div>
+            <div class="fav-item" onclick="agregarAFavoritos()"><i class="bi bi-plus-circle"></i> Agregar este sitio</div>
+            <div class="fav-item text-danger" onclick="borrarFavorito()"><i class="bi bi-trash"></i> Borrar de favoritos</div>
+        </div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <iframe id="viewport" name="viewport" style="display:none;"></iframe>
 
     <script>
-        // ESTADO GLOBAL
         let db = null;
-        let session = null; // Usuario actual
+        let session = null;
 
-        // 1. CARGA INICIAL
-        async function init() {
-            const localData = localStorage.getItem('sgi_db');
-            if (localData) {
-                db = JSON.parse(localData);
+        // INICIO
+        async function loadSystem() {
+            const cache = localStorage.getItem('sgi_cache');
+            if (cache) {
+                db = JSON.parse(cache);
             } else {
-                const response = await fetch('system.json');
-                db = await response.json();
-                saveDB();
+                const res = await fetch('system.json');
+                db = await res.json();
+                actualizarCache();
             }
-            checkSession();
+            checkAutoLogin();
         }
 
-        function saveDB() { localStorage.setItem('sgi_db', JSON.stringify(db)); }
+        function actualizarCache() { localStorage.setItem('sgi_cache', JSON.stringify(db)); }
 
-        function checkSession() {
-            const s = localStorage.getItem('sgi_session');
-            if (s && db.users[s]) {
-                loginSuccess(s);
-            }
+        function checkAutoLogin() {
+            const user = localStorage.getItem('sgi_user');
+            if (user && db.users[user]) loginSuccess(user);
         }
 
-        // 2. AUTENTICACIÓN
-        function auth() {
+        // AUTH
+        function validarAuth() {
             const u = document.getElementById('user').value.trim();
             const p = document.getElementById('pass').value;
             if (db.users[u] && db.users[u].password === p) {
-                localStorage.setItem('sgi_session', u);
+                localStorage.setItem('sgi_user', u);
                 loginSuccess(u);
-            } else {
-                document.getElementById('error-login').style.display = 'block';
-            }
+            } else { alert("Credenciales inválidas"); }
         }
 
-        function loginSuccess(username) {
-            session = username;
+        function loginSuccess(u) {
+            session = u;
             document.getElementById('login-overlay').style.display = 'none';
             document.getElementById('main-header').style.display = 'flex';
             document.getElementById('viewport').style.display = 'block';
-            goHome();
+            irInicio();
         }
 
-        // 3. NAVEGACIÓN
-        function goHome() {
-            const user = db.users[session];
-            // Si el usuario tiene acceso rápido, creamos un "Dashboard" dinámico en el frame
-            if (user.quick_access.length > 0) {
-                buildDashboard(user.quick_access);
-            } else {
-                loadFrame(user.default_page);
-            }
-            setActive('btn-home');
-        }
-
-        function loadFrame(url) {
-            document.getElementById('viewport').src = url;
-            document.getElementById('fav-menu').style.display = 'none';
-        }
-
-        function setActive(id) {
-            document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
-
-        // 4. FAVORITOS
-        function toggleFavs() {
-            const m = document.getElementById('fav-menu');
-            m.style.display = m.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function addCurrentToFav() {
-            const url = document.getElementById('viewport').src;
-            const title = prompt("Nombre para este favorito:", "Nuevo Favorito");
-            if(title) {
-                db.users[session].favorites.push({label: title, url: url});
-                saveDB();
-                alert("Guardado!");
-            }
-            toggleFavs();
-        }
-
-        // 5. MOTOR DE AJUSTES (Genera contenido dinámico para el iframe)
-        function openSettings() {
-            setActive('btn-settings');
-            const user = db.users[session];
-            
+        // NAVEGACIÓN
+        function irInicio() {
+            setTab('btn-home');
+            const u = db.users[session];
+            // Generamos Dashboard dinámico
             let html = `
                 <style>
-                    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; color: #333; }
-                    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-                    input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-                    button { background: #58a6ff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-                    .admin-zone { border-top: 2px solid #ff7b72; margin-top: 20px; padding-top: 20px; }
+                    body { background: #f0f2f5; font-family: sans-serif; padding: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+                    .card { background: white; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-decoration: none; color: #333; }
+                    .card i { font-size: 2.5rem; color: #58a6ff; display: block; margin-bottom: 10px; }
+                    .card span { font-weight: bold; font-size: 0.9rem; }
                 </style>
-                <div class="card">
-                    <h3>Mis Ajustes</h3>
-                    <p>Usuario: <b>${session}</b> | Rol: <b>${user.role.toUpperCase()}</b></p>
-                    <hr>
-                    <label>Correo Electrónico:</label>
-                    <input type="email" id="new_email" value="${user.email}">
-                    <label>Contraseña Actual (requerida):</label>
-                    <input type="password" id="old_pass">
-                    <label>Nueva Contraseña (opcional):</label>
-                    <input type="password" id="new_pass1">
-                    <input type="password" id="new_pass2" placeholder="Repetir nueva contraseña">
-                    <button onclick="parent.updateProfile()">Guardar Cambios</button>
-                </div>
-                
-                <div class="card">
-                    <h3>Botones de Acceso Rápido</h3>
-                    <div id="qa-list"></div>
-                    <hr>
-                    <h4>Agregar Botón</h4>
-                    <input id="qa_name" placeholder="Nombre">
-                    <input id="qa_icon" placeholder="Icono (ej: bi-link)">
-                    <input id="qa_url" placeholder="URL">
-                    <button onclick="parent.addQA()">+ Agregar</button>
-                </div>
+                <h3>Bienvenido, ${session}</h3>
+                <div style="grid-column: span 2; height: 1px; background: #ddd; margin: 10px 0;"></div>
+            `;
+            u.quick_access.forEach(btn => {
+                html += `<a href="${btn.url}" class="card"><i class="bi ${btn.icon}"></i><span>${btn.label}</span></a>`;
+            });
+            document.getElementById('viewport').srcdoc = html;
+        }
+
+        function irAjustes() {
+            setTab('btn-settings');
+            const u = db.users[session];
+            let html = `
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+                <style>body { padding: 20px; background: #f8f9fa; }</style>
+                <div class="container">
+                    <div class="card p-3 shadow-sm mb-4">
+                        <h5 class="fw-bold">Mi Perfil</h5>
+                        <p class="small text-muted">Rol: ${u.role}</p>
+                        <label class="form-label mt-2">Email:</label>
+                        <input id="email" class="form-control mb-3" value="${u.email}">
+                        <hr>
+                        <label class="form-label">Contraseña Actual:</label>
+                        <input type="password" id="old_p" class="form-control mb-2">
+                        <label class="form-label">Nueva Contraseña:</label>
+                        <input type="password" id="new_p1" class="form-control mb-2">
+                        <input type="password" id="new_p2" class="form-control mb-3" placeholder="Repetir nueva">
+                        <button onclick="parent.saveProfile()" class="btn btn-primary w-100">Guardar Cambios</button>
+                    </div>
+
+                    <div class="card p-3 shadow-sm mb-4">
+                        <h5 class="fw-bold">Botones Acceso Rápido</h5>
+                        <input id="qa_n" class="form-control mb-2" placeholder="Nombre (ej: Google)">
+                        <input id="qa_i" class="form-control mb-2" placeholder="Icono (ej: bi-link)">
+                        <input id="qa_u" class="form-control mb-2" placeholder="URL">
+                        <button onclick="parent.addQA()" class="btn btn-outline-primary w-100">+ Añadir Botón</button>
+                    </div>
             `;
 
-            if (user.role === 'admin') {
+            if(u.role === 'admin') {
                 html += `
-                    <div class="card admin-zone">
-                        <h3>Panel Administrador</h3>
-                        <div id="user-list"></div>
-                        <hr>
-                        <h4>Registrar Nuevo Usuario</h4>
-                        <input id="adm_user" placeholder="Usuario">
-                        <input id="adm_pass" placeholder="Contraseña">
-                        <select id="adm_role" style="width:100%; padding:10px; margin-bottom:10px;">
-                            <option value="user">Usuario Estándar</option>
-                            <option value="admin">Administrador</option>
+                    <div class="card p-3 shadow-sm border-danger">
+                        <h5 class="fw-bold text-danger">Administración Usuarios</h5>
+                        <input id="adm_u" class="form-control mb-2" placeholder="Nuevo Usuario">
+                        <input id="adm_p" class="form-control mb-2" placeholder="Contraseña">
+                        <select id="adm_r" class="form-select mb-3">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
                         </select>
-                        <button onclick="parent.adminAddUser()" style="background:#238636">Registrar</button>
+                        <button onclick="parent.adminAdd()" class="btn btn-danger w-100">Registrar</button>
                     </div>
                 `;
             }
 
-            const frame = document.getElementById('viewport');
-            frame.srcdoc = html;
+            html += `</div>`;
+            document.getElementById('viewport').srcdoc = html;
         }
 
-        // FUNCIONES DE ACCIÓN DESDE EL FRAME
-        window.updateProfile = function() {
-            const frameDoc = document.getElementById('viewport').contentDocument;
-            const email = frameDoc.getElementById('new_email').value;
-            const oldP = frameDoc.getElementById('old_pass').value;
-            const newP1 = frameDoc.getElementById('new_pass1').value;
-            const newP2 = frameDoc.getElementById('new_pass2').value;
+        // LÓGICA DE ACCIÓN (Llamada desde el frame)
+        window.saveProfile = function() {
+            const f = document.getElementById('viewport').contentDocument;
+            const op = f.getElementById('old_p').value;
+            const np1 = f.getElementById('new_p1').value;
+            const np2 = f.getElementById('new_p2').value;
 
-            if (oldP !== db.users[session].password) {
-                alert("La contraseña actual es incorrecta.");
-                return;
-            }
-
-            db.users[session].email = email;
-
-            if (newP1 || newP2) {
-                if (newP1 === newP2 && newP1.length > 0) {
-                    db.users[session].password = newP1;
-                } else {
-                    alert("Las nuevas contraseñas no coinciden.");
-                    return;
-                }
-            }
-
-            saveDB();
-            alert("Perfil actualizado correctamente.");
-            openSettings();
+            if (op !== db.users[session].password) return alert("Contraseña actual incorrecta");
+            
+            db.users[session].email = f.getElementById('email').value;
+            if (np1 && np1 === np2) db.users[session].password = np1;
+            
+            actualizarCache(); alert("Actualizado!"); irAjustes();
         };
 
         window.addQA = function() {
             const f = document.getElementById('viewport').contentDocument;
             const btn = {
-                label: f.getElementById('qa_name').value,
-                icon: f.getElementById('qa_icon').value,
-                url: f.getElementById('qa_url').value
+                label: f.getElementById('qa_n').value,
+                icon: f.getElementById('qa_i').value || 'bi-app',
+                url: f.getElementById('qa_u').value
             };
             db.users[session].quick_access.push(btn);
-            saveDB();
-            openSettings();
+            actualizarCache(); irInicio();
         };
 
-        window.adminAddUser = function() {
+        window.adminAdd = function() {
             const f = document.getElementById('viewport').contentDocument;
-            const u = f.getElementById('adm_user').value.toLowerCase().trim();
-            const p = f.getElementById('adm_pass').value;
-            const r = f.getElementById('adm_role').value;
-
-            if (u && p) {
-                db.users[u] = {
-                    password: p,
-                    email: "",
-                    role: r,
-                    default_page: "about:blank",
-                    favorites: [],
-                    quick_access: []
-                };
-                saveDB();
-                alert("Usuario registrado.");
-                openSettings();
-            }
-        };
-
-        function buildDashboard(links) {
-            let html = `
-                <style>
-                    body { background: #f0f2f5; display: flex; flex-wrap: wrap; gap: 15px; padding: 20px; justify-content: center; font-family: sans-serif; }
-                    .qa-card { 
-                        background: white; width: 120px; height: 120px; border-radius: 15px;
-                        display: flex; flex-direction: column; align-items: center; justify-content: center;
-                        box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; text-decoration: none; color: #333;
-                        transition: 0.2s; border: 1px solid #ddd;
-                    }
-                    .qa-card:active { transform: scale(0.9); }
-                    .qa-card i { font-size: 2.5rem; color: #58a6ff; margin-bottom: 8px; }
-                    .qa-card span { font-size: 0.8rem; font-weight: bold; text-align: center; }
-                </style>
-            `;
-            links.forEach(l => {
-                html += `<a href="${l.url}" class="qa-card"><i class="bi ${l.icon}"></i><span>${l.label}</span></a>`;
-            });
-            document.getElementById('viewport').srcdoc = html;
+            const user = f.getElementById('adm_u').value.trim();
+            if (!user) return;
+            db.users[user] = {
+                password: f.getElementById('adm_p').value,
+                role: f.getElementById('adm_r').value,
+                email: "", favorites: [], quick_access: []
+            };
+            actualizarCache(); alert("Usuario Creado"); irAjustes();
         }
 
-        function logout() {
-            localStorage.removeItem('sgi_session');
-            location.reload();
+        // UTILIDADES
+        function setTab(id) {
+            document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('fav-menu').style.display = 'none';
         }
 
-        window.onload = init;
+        function toggleFavs() {
+            const m = document.getElementById('fav-menu');
+            m.style.display = m.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function cerrarSesion() { localStorage.removeItem('sgi_user'); location.reload(); }
+
+        window.onload = loadSystem;
     </script>
 </body>
 </html>
