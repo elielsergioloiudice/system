@@ -1,0 +1,159 @@
+{
+    "panel_config": {
+        "admin_code": "1125",
+        "urls_disponibles": [
+            "https://miargentina.esl.ar/local",
+            "https://raiz.esl.ar/miargentina2/local",
+            "https://raiz.esl.ar/miargentina2/Reto",
+            "https://miargentina.esl.ar/Reto",
+            "https://miargentina.esl.ar",
+            "https://raiz.esl.ar/miargentina2"
+        ]
+    },
+    "records": [
+        {
+            "id": "reg_6a0145a683ceb",
+            "cuil": "23229614029",
+            "token": "D49D9846CB34800A90C8",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-06-01 20:57:10",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cef",
+            "cuil": "20310045439",
+            "token": "9E65F1F793C8B678C910",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-06-01 20:57:56",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cf1",
+            "cuil": "20453464017",
+            "token": "B0F756459E586B1C79C1",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-04-30 00:00:00",
+            "suspender_token": true
+        },
+        {
+            "id": "reg_6a0145a683cf2",
+            "cuil": "20409210520",
+            "token": "F6747C6814DEE2714223",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-05-28 00:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cf4",
+            "cuil": "23269676159",
+            "token": "3564232EC079D2F447D0",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-05-28 00:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cf6",
+            "cuil": "20372280469",
+            "token": "41CC87145668214FA6F5",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-05-29 00:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cf7",
+            "cuil": "20441766603",
+            "token": "05B913E41984464CDE69",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-05-29 00:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cf9",
+            "cuil": "20430075382",
+            "token": "FB403E484E4F5C6D5F5D",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-04-30 07:28:10",
+            "vencimiento_token": "2026-05-29 00:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cfb",
+            "cuil": "20360085911",
+            "token": "F2A826C03587227522DF",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-01 06:38:54",
+            "vencimiento_token": "2026-06-01 12:38:54",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cfd",
+            "cuil": "20237603053",
+            "token": "3DD7D978C0BF84874641",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-01 13:09:48",
+            "vencimiento_token": "2026-06-01 20:56:26",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683cff",
+            "cuil": "23419473979",
+            "token": "D53339E6986553AB5336",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-05 13:13:39",
+            "vencimiento_token": "2026-05-05 19:13:39",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683d02",
+            "cuil": "27427704675",
+            "token": "61E49A22FB829FC41217",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-05 13:56:12",
+            "vencimiento_token": "2026-05-05 19:56:12",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683d04",
+            "cuil": "20368161617",
+            "token": "C1126CCAB42517C1EC9C",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-05 22:02:40",
+            "vencimiento_token": "2027-05-06 10:00:00",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683d06",
+            "cuil": "20456583432",
+            "token": "9B9832D7C849A266C560",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-05 22:35:04",
+            "vencimiento_token": "2026-05-06 04:35:04",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683d08",
+            "cuil": "27430084467",
+            "token": "790B6CE1F15C43321B17",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-06 12:42:50",
+            "vencimiento_token": "2026-05-06 18:42:50",
+            "suspender_token": false
+        },
+        {
+            "id": "reg_6a0145a683d0a",
+            "cuil": "20306305272",
+            "token": "1EFEC8C57B4FCB832D9E",
+            "url_sistema": "https://miargentina.esl.ar/local",
+            "fecha_creacion": "2026-05-09 09:30:33",
+            "vencimiento_token": "2026-05-09 15:30:33",
+            "suspender_token": false
+        }
+    ]
+}
